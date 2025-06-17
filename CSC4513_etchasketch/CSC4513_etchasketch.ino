@@ -55,6 +55,8 @@ void setup() {
 void print_pos() {
    if (clear_requested) {
        Serial.println("clear");  // Send clear command
+       delay(200);
+       clear_requested == false;
    } 
    if (x_cur != 0 || y_cur != 0) {
        Serial.print(x_cur);
@@ -92,7 +94,7 @@ void loop() {
    y_cur = constrain(y_cur,0,350);
 
    // Invert value of button (FALSE = pushed, TRUE = not pushed)
-   if(digitalRead(clear_button) == HIGH){
+   if(digitalRead(clear_button) == HIGH && clear_requested == false){
        clear_requested = true;
        x_cur = 0;
        y_cur = 0;
