@@ -55,7 +55,8 @@ void setup() {
 void print_pos() {
    if (clear_requested) {
        Serial.println("clear");  // Send clear command
-   } else if (x_cur != 0 || y_cur != 0) {
+   } 
+   if (x_cur != 0 || y_cur != 0) {
        Serial.print(x_cur);
        Serial.print(",");
        Serial.println(y_cur);   // Send position as x,y
@@ -91,15 +92,15 @@ void loop() {
    y_cur = constrain(y_cur,0,350);
 
    // Invert value of button (FALSE = pushed, TRUE = not pushed)
-   if(digitalRead(clear_button) == LOW){
+   if(digitalRead(clear_button) == HIGH){
        clear_requested = true;
        x_cur = 0;
        y_cur = 0;
    }
    else {
        clear_requested = false;
+       Serial.println("no clear");
    }
-
 
    // Print new position to serial monitor if position values have changed
    if ((x_prev != x_cur || y_prev != y_cur) || clear_requested) {
