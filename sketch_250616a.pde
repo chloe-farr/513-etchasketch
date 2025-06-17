@@ -9,14 +9,14 @@ int y = 0;
 int x_prev = 0;
 int y_prev = 0;
 
-int canvasX = 85;
-int canvasY = 140;
-int canvasW = 470;
-int canvasH = 335;
+int canvasX = 175;
+int canvasY = 170;
+int canvasW = 935;
+int canvasH = 660;
 
 void setup() {
-  size(640, 640); 
-  frame = loadImage("frame.png");
+  size(1280, 1044); 
+  frame = loadImage("EtchasketchController.png");
   drawingLayer = createGraphics(canvasW, canvasH);
   
   String portName = "/dev/cu.usbmodem1101";     
@@ -25,7 +25,7 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(200);
   image(frame,0,0);
   image(drawingLayer,canvasX,canvasY);
 }
